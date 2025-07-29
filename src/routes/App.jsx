@@ -11,6 +11,7 @@ import CreateAccount from '@pages/CreateAccount';
 import Checkout from '@pages/Checkout';
 import Orders from '@pages/Orders';
 import NotFound from '@pages/NotFound';
+import Product from '@pages/Product';
 import AppContext from '../context/AppContext';
 import useInitialState from '../hooks/useInitialState';
 import '@styles/global.css';
@@ -23,6 +24,7 @@ const App = () => {
         <Layout>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/product/:id" component={Product} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/password-recovery" component={PasswordRecovery} />
             <Route exact path="/send-email" component={SendEmail} />

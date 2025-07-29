@@ -11,9 +11,13 @@ const ProductItem = ({ product }) => {
         addToCart(item);
     }
 
+    const showProduct = (id) => {
+        window.location.href = `/product/${id}`;
+    }
+
     return (
         <div className="ProductItem">
-            <img src={product.images[0]} alt={product.title} />
+            <img src={product.images[0]} alt={product.title} onClick={() => showProduct(product.id)} />
             <div className="product-info">
                 <div>
                     <p>${product.price}</p>
