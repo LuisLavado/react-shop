@@ -9,7 +9,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: isProduction ? '/react-shop/' : '/',
+        // publicPath: isProduction ? '/react-shop/' : '/',
+        publicPath: isProduction ? '/' : '/',
     },
     mode: isProduction ? 'production' : 'development',
     resolve: {
