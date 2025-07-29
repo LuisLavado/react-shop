@@ -1,5 +1,5 @@
 const path = require('path');
-const HtmlWeppackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: '/'
+        publicPath: process.env.NODE_ENV === 'production' ? '/react-shop/' : '/',
     },
     mode: 'development',
     resolve: {
@@ -39,7 +39,7 @@ module.exports = {
                         loader: 'html-loader'
                     }
                 ]
-            }, 
+            },
             {
                 // test: /\.s[ac]ss$/i,
                 test: /\.(css|scss)$/,
@@ -56,7 +56,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWeppackPlugin({
+        new HtmlWebpackPlugin({
             template: './public/index.html',
             filename: './index.html'
         }),
