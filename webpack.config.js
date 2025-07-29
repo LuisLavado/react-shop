@@ -2,14 +2,16 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: process.env.NODE_ENV === 'production' ? '/react-shop/' : '/',
+        publicPath: isProduction ? '/react-shop/' : '/',
     },
-    mode: 'development',
+    mode: isProduction ? 'production' : 'development',
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
