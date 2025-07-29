@@ -1,24 +1,68 @@
 @import 'vars';
 
 .OrderItem {
-	display: grid;
-	grid-template-columns: auto 1fr auto auto;
-	gap: 16px;
-	margin-bottom: 24px;
-	align-items: center;
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 1.5rem;
+
+	.flex {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.OrderItemTitle {
+		margin-top: 0;
+		padding-right: 0.5rem;
+		font-size: var(--md);
+		font-weight: 600;
+	}
+
+	.IconClose {
+		border-radius: 50%;
+		border: 1px solid rgb(187, 179, 179);
+		padding: 0.25rem;
+		cursor: pointer;
+	}
+
+	.WrapQuantity {
+		display: flex;
+		background-color: cornsilk;
+		input {
+			font-size: medium;
+			font-weight: bold;
+			width: 3rem;
+			display: flex;
+			justify-items: center;
+			align-items: center;
+		}
+		button {
+			font-weight: bold;
+			font-size: medium;
+			width: 2rem;
+		}
+	}
+
+	.WrapPrice {
+		display: flex;
+		align-items: center;
+	}
 }
+
 .OrderItem figure {
 	margin: 0;
 }
+
 .OrderItem figure img {
 	width: 70px;
 	height: 70px;
 	border-radius: 20px;
 	object-fit: cover;
 }
-.OrderItem p:nth-child(2) {
-	color: var(--very-light-pink);
-}
+
+// .OrderItem p:nth-child(2) {
+// 	color: var(--very-light-pink);
+// }
+
 .OrderItem p:nth-child(3) {
 	font-size: var(--md);
 	font-weight: bold;

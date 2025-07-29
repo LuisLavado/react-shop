@@ -14,9 +14,24 @@ const OrderItem = ({ product }) => {
 			<figure>
 				<img src={product.images[0]} alt={product.title} />
 			</figure>
-			<p>{product.title}</p>
-			<p>${product.price}</p>
-			<img src={iconClose} alt="close" onClick={() => handleRemove(product)} />
+			<div>
+				<div className='flex'>
+					<p className='OrderItemTitle'>{product.title}</p>
+					<div>
+						<img className='IconClose' src={iconClose} alt="close" onClick={() => handleRemove(product)} />
+					</div>
+				</div>
+				<div className='flex'>
+					<div className="WrapQuantity">
+						<button type="button">-</button>
+						<input type="number" name='quantity' value={product.quantity} disabled />
+						<button type="button">+</button>
+					</div>
+					<div className="WrapPrice">
+						<p className='m-0'>${product.price * product.quantity}</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 }

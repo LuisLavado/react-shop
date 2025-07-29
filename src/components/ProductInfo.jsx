@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../styles/ProductInfo.scss';
+import iconAddToCart from "@icons/bt_add_to_cart.svg";
+import AppContext from '../context/AppContext';
 
-const ProductInfo = () => {
+
+const ProductInfo = ({ product }) => {
+
+	const { addToCart } = useContext(AppContext);
+	const cover = product.images && product.images.length > 0 ? product.images[0] : '';
+
+
+	const handleClick = item => {
+		addToCart(item);
+	}
+
 	return (
 		<>
-			<img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike" />
+			<img src={cover} alt={product.title} />
 			<div className="ProductInfo">
-				<p>$35,00</p>
-				<p>Bike</p>
-				<p>With its practical position, this bike also fulfills a decorative function, add your hall or workspace.</p>
-				<button className="primary-button add-to-cart-button">
-					<img src="./icons/bt_add_to_cart.svg" alt="add to cart" />
+				<p>{product.price}</p>
+				<p>{product.title}</p>
+				<p>{product.description}</p>
+				<button className="primary-button add-to-cart-button" onClick={() => handleClick(product)}>
+					<img src={iconAddToCart} alt="bt_add_to_cart.svg" />
 					Add to cart
 				</button>
 			</div>

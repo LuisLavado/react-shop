@@ -1,15 +1,25 @@
 import React from 'react';
 import ProductInfo from '../components/ProductInfo';
 import '../styles/ProductDetail.scss';
+import useGetProduct from '@hooks/useGetProduct';
+import iconClose from "@icons/icon_close.png";
 
-const ProductDetail = () => {
+const API = 'https://api.escuelajs.co/api/v1/products';
+
+const ProductDetail = ({ id }) => {
+	const product = useGetProduct(`${API}/${id}`);
+
+	const back = () => {
+		window.history.back();
+	}
+
 	return (
-		<aside className="ProductDetail">
+		<div className="ProductDetail">
 			<div className="ProductDetail-close">
-				<img src="./icons/icon_close.png" alt="close" />
+				<img src={iconClose} alt="close" onClick={back} />
 			</div>
-			<ProductInfo />
-		</aside>
+			<ProductInfo product={product} />
+		</div>
 	);
 }
 
